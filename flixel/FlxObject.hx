@@ -627,8 +627,14 @@ class FlxObject extends FlxBasic
 	}
 	
 	/**
-	 * WARNING: This will remove this object entirely. Use kill() if you want to disable it temporarily only and reset() it later to revive it.
-	 * Override this function to null out variables manually or call destroy() on class members if necessary. Don't forget to call super.destroy()!
+	 * **WARNING:** A destroyed `FlxBasic` can't be used anymore.
+	 * It may even cause crashes if it is still part of a group or state.
+	 * You may want to use `kill()` instead if you want to disable the object temporarily only and `revive()` it later.
+	 * 
+	 * This function is usually not called manually (Flixel calls it automatically during state switches for all `add()`ed objects).
+	 * 
+	 * Override this function to `null` out variables manually or call `destroy()` on class members if necessary.
+	 * Don't forget to call `super.destroy()`!
 	 */
 	override public function destroy():Void
 	{
